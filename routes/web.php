@@ -16,12 +16,15 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', HomeController::class);
 
-Route::controller(CursoController::class)->group(function () {
-    Route::get('cursos', 'index');
-    Route::get('/cursos/create', 'create');
-    Route::get('/cursos/{curso}', 'show');
-});
+// Route::controller(CursoController::class)->group(function () {
+//     Route::get('cursos', 'index')-;
+//     Route::get('/cursos/create', 'create');
+//     Route::get('/cursos/{curso}', 'show');
+// });
 
-// Route::get('/', [CursoController::class, 'index']);
-// Route::get('/cursos/create', [CursoController::class, 'create']);
-// Route::get('/cursos/{curso}', [CursoController::class, 'show']);
+Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
+Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+Route::get('/cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
+Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
+Route::get('/cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+Route::put('/cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
