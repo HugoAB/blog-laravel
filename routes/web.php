@@ -22,9 +22,13 @@ Route::get('/', HomeController::class);
 //     Route::get('/cursos/{curso}', 'show');
 // });
 
-Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
-Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
-Route::get('/cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
-Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
-Route::get('/cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
-Route::put('/cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+// Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
+// Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+// Route::get('/cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
+// Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
+// Route::get('/cursos/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+// Route::put('/cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+// Route::delete('/curso/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+
+// Usar resource cuando hay muchas rutas
+Route::resource('cursos', CursoController::class);
