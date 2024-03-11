@@ -17,6 +17,14 @@
             @enderror
         </div>
         <div>
+            <label for="slug">Slug</label>
+            <input type="text" name="slug" id="slug" value="{{old('slug', $curso->slug)}}">
+    
+            @error('slug')
+                <p>*{{$message}}</p>
+            @enderror
+        </div>
+        <div>
             <label for="description">Descripción</label>
             <textarea name="description" id="description" rows="5">{{old('description', $curso->description)}}</textarea>
 

@@ -3,6 +3,9 @@
 use App\Http\Controllers\CursoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contactanos;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +16,6 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', HomeController::class);
 
 // Route::controller(CursoController::class)->group(function () {
 //     Route::get('cursos', 'index')-;
@@ -31,4 +32,11 @@ Route::get('/', HomeController::class);
 // Route::delete('/curso/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
 
 // Usar resource cuando hay muchas rutas
+Route::get('/', HomeController::class)->name('home');
+Route::view('nosotros', 'nosotros')->name('nosotros');
 Route::resource('cursos', CursoController::class);
+Route::get('/contactanos', function () {
+    Mail::to('hbobv2020@gmail.com')
+        ->send(new Contactanos);
+    return "Mensaje enviado";
+})->name('contactanos');
